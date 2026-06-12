@@ -1,0 +1,176 @@
+openapi: 3.0.0
+info:
+  title: TodoCamisetas API
+  description: API RESTful B2B para la gestión de inventario de camisetas y clientes.
+  version: 1.0.0
+servers:
+  - url: http://localhost/todocamisetas
+    description: Servidor Local (XAMPP)
+paths:
+  /api/camisetas:
+    get:
+      summary: Listar todas las camisetas
+      responses:
+        '200':
+          description: Lista de camisetas obtenida correctamente
+    post:
+      summary: Crear una nueva camiseta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CamisetaInput'
+      responses:
+        '201':
+          description: Camiseta creada exitosamente
+  /api/camisetas/{id}:
+    get:
+      summary: Obtener detalle de una camiseta y calcular precio
+      description: Si se envía el query parameter cliente_id, calcula el precio final con descuento si aplica.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID de la camiseta
+        - in: query
+          name: cliente_id
+          schema:
+            type: integer
+          description: ID del cliente B2B (Para calcular precio final)
+      responses:
+        '200':
+          description: Detalles de la camiseta
+        '404':
+          description: Camiseta no encontrada
+    delete:
+      summary: Eliminar una camiseta
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Camiseta eliminada
+  /api/clientes:
+    get:
+      summary: Listar todos los clientes
+      responses:
+        '200':
+          description: Lista de clientes obtenida
+    post:
+      summary: Crear un nuevo cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteInput'
+      responses:
+        '201':
+          description: Cliente creado
+  /api/clientes/{id}:
+    get:
+      summary: Obtener un cliente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Datos del cliente
+    delete:
+      summary: Eliminar un cliente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cliente eliminado
+  /api/tallas:
+    get:
+      summary: Listar todas las tallas
+      responses:
+        '200':
+          description: Tallas disponibles
+  /api/tallas/asignar:
+    post:
+      summary: Asignar una talla a una camiseta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                camiseta_id:
+                  type: integer
+                  example: 1
+                talla_id:
+                  type: integer
+                  example: 2
+      responses:
+        '201':
+          description: Talla asignada
+components:
+  schemas:
+    CamisetaInput:
+      type: object
+      properties:
+        codigo_producto:
+          type: string
+          example: "SCL2025L"
+        titulo:
+          type: string
+          example: "Camiseta Local 2025 - Selección Chilena"
+        club:
+          type: string
+          example: "Selección Chilena"
+        pais:
+          type: string
+          example: "Chile"
+        tipo:
+          type: string
+          example: "Local"
+        color:
+          type: string
+          example: "Rojo"
+        precio_base:
+          type: integer
+          example: 45000
+        detalles:
+          type: string
+          example: "Edición aniversario 2025"
+    ClienteInput:
+      type: object
+      properties:
+        nombre_comercial:
+          type: string
+          example: "90minutos"
+        rut:
+          type: string
+          example: "76.123.456-K"
+        direccion:
+          type: string
+          example: "Providencia, Santiago"
+        categoria:
+          type: string
+          example: "Preferencial"
+        contacto_nombre:
+          type: string
+          example: "Matías López"
+        contacto_correo:
+          type: string
+          example: "compras@90minutos.cl"
+        porcentaje_oferta:
+          type: integer
+          example: 15

@@ -1,0 +1,174 @@
+{
+	"info": {
+		"name": "TodoCamisetas B2B API",
+		"description": "Colección completa para gestionar camisetas, clientes y tallas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Camisetas",
+			"item": [
+				{
+					"name": "Obtener Todas las Camisetas",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/camisetas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "camisetas"]
+						}
+					}
+				},
+				{
+					"name": "Obtener Camiseta (Precio Regular - tdeportes)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/camisetas/1?cliente_id=2",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "camisetas", "1"],
+							"query": [
+								{
+									"key": "cliente_id",
+									"value": "2"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Camiseta (Precio Oferta - 90minutos)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/camisetas/1?cliente_id=1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "camisetas", "1"],
+							"query": [
+								{
+									"key": "cliente_id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Crear Camiseta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo_producto\": \"BCA2025\",\n    \"titulo\": \"Camiseta Visita 2025 - Boca Juniors\",\n    \"club\": \"Boca Juniors\",\n    \"pais\": \"Argentina\",\n    \"tipo\": \"Visita\",\n    \"color\": \"Amarillo\",\n    \"precio_base\": 42000,\n    \"detalles\": \"Modelo visitante alternativo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/camisetas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "camisetas"]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Camiseta",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/camisetas/3",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "camisetas", "3"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Clientes",
+			"item": [
+				{
+					"name": "Obtener Todos los Clientes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/clientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "clientes"]
+						}
+					}
+				},
+				{
+					"name": "Crear Cliente B2B",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre_comercial\": \"Deportes Centro\",\n    \"rut\": \"75.111.222-3\",\n    \"direccion\": \"Valparaíso\",\n    \"categoria\": \"Preferencial\",\n    \"contacto_nombre\": \"Luis Rojas\",\n    \"contacto_correo\": \"ventas@deportescentro.cl\",\n    \"porcentaje_oferta\": 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/clientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "clientes"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Tallas",
+			"item": [
+				{
+					"name": "Obtener Tallas",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/tallas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "tallas"]
+						}
+					}
+				},
+				{
+					"name": "Asignar Talla a Camiseta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"camiseta_id\": 2,\n    \"talla_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost/todocamisetas/api/tallas/asignar",
+							"protocol": "http",
+							"host": ["localhost"],
+							"path": ["todocamisetas", "api", "tallas", "asignar"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
