@@ -6,7 +6,7 @@ Este sistema actúa como la columna vertebral tecnológica para la automatizaci�
 
 ---
 
-## 🚀 Características Principales
+##  Características Principales
 * **Arquitectura Limpia:** Separación estricta de responsabilidades usando el patrón MVC.
 * **Enrutamiento Avanzado:** Despachador de tráfico basado en expresiones regulares en PHP puro.
 * **Persistencia Segura:** Acceso a datos mediante PDO con consultas preparadas contra inyecciones SQL.
