@@ -1,4 +1,4 @@
-# 👕 TodoCamisetas API — Sistema Backend de Gestión B2B
+#  TodoCamisetas API — Sistema Backend de Gestión B2B
 
 Bienvenido al repositorio oficial de **TodoCamisetas**, una solución API RESTful robusta desarrollada en **PHP Puro (sin frameworks)** y estructurada bajo el patrón **Modelo-Vista-Controlador (MVC)**. 
 
@@ -15,7 +15,7 @@ Este sistema actúa como la columna vertebral tecnológica para la automatizaci�
 
 ---
 
-## 📁 Arquitectura y Diseño de Archivos
+##  Arquitectura y Diseño de Archivos
 
 El proyecto prescinde intencionalmente de frameworks externos para demostrar la capacidad de abstracción y modularidad de la arquitectura nativa en PHP.
 
@@ -46,7 +46,7 @@ Explicación de componentes:
 * **controllers/:** Reciben la solicitud, validan la existencia de datos obligatorios en el request y coordinan la comunicación con la capa de persistencia (models).
 * **models/:** Encapsulan toda la lógica de acceso a datos (PDO::prepare) garantizando seguridad contra inyecciones SQL y coherencia en las operaciones CRUD.
 
-## 📁 Detalle de endpoints
+##  Detalle de endpoints
 | Método | Endpoint | Expresión regular | Propósito Endpoint |
 | --- | --- | --- | --- |
 | GET | /api/camisetas | /api\/camisetas\/?$/ | Obtener lista completa de camisetas. |
